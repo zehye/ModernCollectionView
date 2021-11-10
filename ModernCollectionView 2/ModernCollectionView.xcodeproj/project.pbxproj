@@ -18,6 +18,8 @@
 		C90ED09227390EB200AEF65F /* ModernCollectionViewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED09127390EB200AEF65F /* ModernCollectionViewUITestsLaunchTests.swift */; };
 		C90ED09F27391C5300AEF65F /* EmojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED09E27391C5300AEF65F /* EmojiViewController.swift */; };
 		C90ED0A127392A3000AEF65F /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0A027392A3000AEF65F /* Emoji.swift */; };
+		C90ED0A6273A4FBA00AEF65F /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0A4273A4FBA00AEF65F /* EmojiCollectionViewCell.swift */; };
+		C90ED0A7273A4FBA00AEF65F /* EmojiCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90ED0A5273A4FBA00AEF65F /* EmojiCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		C90ED09127390EB200AEF65F /* ModernCollectionViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernCollectionViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C90ED09E27391C5300AEF65F /* EmojiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewController.swift; sourceTree = "<group>"; };
 		C90ED0A027392A3000AEF65F /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		C90ED0A4273A4FBA00AEF65F /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
+		C90ED0A5273A4FBA00AEF65F /* EmojiCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				C90ED07727390EB200AEF65F /* Assets.xcassets */,
 				C90ED07927390EB200AEF65F /* LaunchScreen.storyboard */,
 				C90ED07C27390EB200AEF65F /* Info.plist */,
+				C90ED0A4273A4FBA00AEF65F /* EmojiCollectionViewCell.swift */,
+				C90ED0A5273A4FBA00AEF65F /* EmojiCollectionViewCell.xib */,
 			);
 			path = ModernCollectionView;
 			sourceTree = "<group>";
@@ -240,6 +246,7 @@
 				C90ED07B27390EB200AEF65F /* LaunchScreen.storyboard in Resources */,
 				C90ED07827390EB200AEF65F /* Assets.xcassets in Resources */,
 				C90ED07627390EB000AEF65F /* Main.storyboard in Resources */,
+				C90ED0A7273A4FBA00AEF65F /* EmojiCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C90ED0A127392A3000AEF65F /* Emoji.swift in Sources */,
+				C90ED0A6273A4FBA00AEF65F /* EmojiCollectionViewCell.swift in Sources */,
 				C90ED07327390EB000AEF65F /* ViewController.swift in Sources */,
 				C90ED06F27390EB000AEF65F /* AppDelegate.swift in Sources */,
 				C90ED07127390EB000AEF65F /* SceneDelegate.swift in Sources */,

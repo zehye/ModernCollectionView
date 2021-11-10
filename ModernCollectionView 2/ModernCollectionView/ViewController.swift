@@ -9,22 +9,23 @@ import UIKit
 
 class ViewController: UIViewController {
     // hash > unique한 key: set or dict key값에 클래스나 구조체를 넣을 때 사용
-    // hash table의 key값이 될 수 있도록 도와주는 프로토콜 > hash table에서 hash값을 찾기 위해서는 고유한 key값이 필요 
+    // hash table의 key값이 될 수 있도록 도와주는 프로토콜 > hash table에서 hash값을 찾기 위해서는 고유한 key값이 필요
     // caseIterable > 배열과 같이 순회 가능
     // customStringConveertible > 사용자 정의에 따른 텍스트 출력 가능
-    enum Section: Int, Hashable, CaseIterable, CustomStringConvertible {
-        case recents, outline, list
+    enum Section: Int, Hashable, CaseIterable, CustomStringConvertible {  // 섹션에 들어갈 데이터 정의
+        case recents, outline, list, custom 
         
         var description: String {
             switch self {
             case .recents: return "Recents"
             case .outline: return "Outline"
             case .list: return "List"
+            case .custom: return "Custom"
             }
         }
     }
     
-    struct Item: Hashable {
+    struct Item: Hashable {  // 섹션 속 아이템에 들어갈 데이터 정의
         let title: String?
         let emoji: Emoji?
         let hasChild: Bool
@@ -34,12 +35,15 @@ class ViewController: UIViewController {
             self.title = title
             self.hasChild = hasChild
         }
+        
         private let identifier = UUID()
     }
     
     var starredEmoji = Set<Item>()
     
     var collectionView: UICollectionView!
+    
+    // Data Source에 객체를 할당
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
 
     override func viewDidLoad() {
@@ -49,6 +53,7 @@ class ViewController: UIViewController {
         configureHierarchy()
         configureDataSource()
         applyInitialSnapshots()
+//        self.collectionView.register(UINib(nibName: "EmojiCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customCell")
     }
 }
 
@@ -73,9 +78,11 @@ extension ViewController {
             let section: NSCollectionLayoutSection
             
             if ssectionKind == .recents {
+                // display width / content height (내부 컨텐츠 길이에 맞추겠다)
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+                // width에 대한 상대값
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.28), heightDimension: .fractionalHeight(0.1))
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
                 section = NSCollectionLayoutSection(group: group)
@@ -83,8 +90,16 @@ extension ViewController {
                 section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
                 section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
             } else if ssectionKind == .outline {
-                section = NSCollectionLayoutSection.list(using: .init(appearance: .sidebar), layoutEnvironment: layoutEnvironment)
-                section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10)
+                var configuration = UICollectionLayoutListConfiguration(appearance: .sidebar)
+                configuration.leadingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
+                    guard let self = self else { return nil }
+                    guard let item = self.dataSource.itemIdentifier(for: indexPath) else { return nil }
+                    return self.leadingSwipeActionConfigurationForListCellItem(item)
+                }
+                section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
+                
+//                section = NSCollectionLayoutSection.list(using: .init(appearance: .), layoutEnvironment: layoutEnvironment)
+//                section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10)
             } else if ssectionKind == .list {
                 var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
                 configuration.leadingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
@@ -93,7 +108,10 @@ extension ViewController {
                     return self.leadingSwipeActionConfigurationForListCellItem(item)
                 }
                 section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
-            }else {
+            } else if ssectionKind == .custom {
+                section = NSCollectionLayoutSection.list(using: .init(appearance: .plain), layoutEnvironment: layoutEnvironment)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 100, leading: 10, bottom: 0, trailing: 10)
+            } else {
                 fatalError("Unknown section!")
             }
             return section
@@ -198,14 +216,28 @@ extension ViewController {
         }
     }
     
+    func createPlainCellRegistration() -> UICollectionView.CellRegistration<UICollectionViewListCell, Item> {
+//        return self.collectionView.register(UINib(nibName: "EmojiCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customCell")
+//        self.collectionView.register(UINib(nibName: "EmojiCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customCell")
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: Ind)
+        
+        return  UICollectionView.CellRegistration<UICollectionViewListCell, Item> { [weak self] (cell, indexPath, item) in
+            var content = self?.collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! EmojiCollectionViewCell
+            content.titleLbl.text = item.title
+            print(content)
+            
+        }
+    }
+    
     func configureDataSource() {
         // create registrations up front, then choose the appropriate one to use in the cell provider
         let gridCellRegistration = createGridCellRegistration()
         let listCellRegistration = createListCellRegistration()
         let outlineHeaderCellRegistration = createOutlineHeaderCellRegistration()
         let outlineCellRegistration = createOutlineCellRegistration()
+        let createPlaceRegistration = createPlainCellRegistration()
         
-        // data source
+        // data sourc
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section") }
@@ -223,22 +255,29 @@ extension ViewController {
                 } else {
                     return collectionView.dequeueConfiguredReusableCell(using: outlineCellRegistration, for: indexPath, item: item.emoji)
                 }
+                
+            case .custom:
+                return collectionView.dequeueConfiguredReusableCell(using: createPlaceRegistration, for: indexPath, item: item)
+                
             }
         }
     }
     
     // 스냅샷 적용
+    // NSDiffableDataSourceSnapshot > 데이터 접근, 특정 인덱스에 데이터 삽입 및 삭제 가능 > apply 통해 변경사항 적용 
     func applyInitialSnapshots() {
         let sections = Section.allCases
+//        print(sections)
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+//        print(snapshot)
         snapshot.appendSections(sections)
         dataSource.apply(snapshot, animatingDifferences: false)
         
         // recents
         let recentItems = Emoji.Category.recents.emojis.map { Item(emoji: $0) }
+//        print(recentItems)
         var recentsSnapshot = NSDiffableDataSourceSectionSnapshot<Item>()
         recentsSnapshot.append(recentItems)
-        dataSource.apply(recentsSnapshot, to: .recents, animatingDifferences: false)
 
         // list + outlines
         var allSnapshot = NSDiffableDataSourceSectionSnapshot<Item>()
@@ -256,9 +295,15 @@ extension ViewController {
             outlineSnapshot.append(outlineItems, to: rootItem)
         }
         
+        let customItems = Emoji.Category.recents.emojis.map { Item(emoji: $0) }
+        var cusomSnapshot = NSDiffableDataSourceSectionSnapshot<Item>()
+        cusomSnapshot.append(customItems)
+        
         dataSource.apply(recentsSnapshot, to: .recents, animatingDifferences: false)
         dataSource.apply(allSnapshot, to: .list, animatingDifferences: false)
         dataSource.apply(outlineSnapshot, to: .outline, animatingDifferences: false)
+        dataSource.apply(cusomSnapshot, to: .list, animatingDifferences: false)
+        
         
         // prepopulate starred emojis
 //        for _ in 0..<5 {
@@ -268,4 +313,3 @@ extension ViewController {
 //        }
     }
 }
-
