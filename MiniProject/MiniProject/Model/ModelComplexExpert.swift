@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ModelComplexExpert: NSObject {
-    var companyInfo: ModelCompany?
-    var expertInfo: ModelExpert?
-//    var forClientInfo: ExpertForClientInfoDTO?
-//    var subjectList = [SubjectResponseDTO]()
-//    var tagList = [TagResponseDTO]()
-}
+//class ModelComplexExpert: Codable {
+//    var companyInfo: ModelCompany?
+//    var expertInfo: ModelExpert?
+////    var forClientInfo: ExpertForClientInfoDTO?
+////    var subjectList = [SubjectResponseDTO]()
+////    var tagList = [TagResponseDTO]()
+//}

@@ -7,29 +7,44 @@
 
 import UIKit
 
-class ModelCompany: NSObject {
-    var addrEtc: String = ""
-    var addrJibun: String = ""
-    var addrRoad: String = ""
-    var authedYn: String = ""
-    var brn: String = ""
-    var businessId: String = ""
-    var businessTypeId: String = ""
-    var companyName: String = ""
-    var companyState: String = ""
-    var distance: Double?
-    var doctalkNaverBookingUrl: String = ""
-    var equalCompanyYn: String = ""
-    var hid: String = ""
-    var homepage: String = ""
-    var institutionNumber: String = ""
-    var introPath: String = ""
-    var introduce: String = ""
-    var lat: Double?
-    var lon: Double?
-    var tagNameList: String = ""
-    var tel: String = ""
-    var zipcode: String = ""
-    // Y, N
-    var useNaverBookingYn: String = ""
+/*
+ {
+   "companyName" : "Almighty_도곡양재차엔박",
+   "addrJibun" : "서울특별시 강남구 도곡동 514-2 유니북스빌딩",
+   "introPath" : "https:\/\/img.doctalk.co.kr\/dev\/company\/image\/20210803\/4DryAmQe-cNfs-4jxp-9abO-73c6gcqyJcY8.jpeg.png",
+   "addrRoad" : "서울특별시 강남구 논현로 164(도곡동)",
+   "hid" : "hid-1nZaV9Bz-eoVu-59cx-bxfb-2dqGRaYx7Jj2",
+   "addrEtc" : "10층",
+   "authedYn" : "Y"
+ }
+*/
+
+struct Company: Decodable {
+    let addrEtc: String
+    let addrJibun: String
+    let addrRoad: String
+    let companyName: String
+    let authedYn: String
+    let introPath: String
+    
+    let hid = UUID()
 }
+
+extension Company: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(addrEtc)
+        hasher.combine(addrJibun)
+        hasher.combine(addrRoad)
+        hasher.combine(companyName)
+        hasher.combine(hid)
+        hasher.combine(authedYn)
+        hasher.combine(introPath)
+    }
+}
+
+extension Array where Element == Company {
+    static var companyJson: Self {
+        try! Bundle.decodeJSONFromMainResources(filename: "short")
+    }
+}
+

@@ -1,0 +1,82 @@
+[
+    {
+        "useNaverBookingYn" : "N",
+        "companyName" : "Almighty_도곡양재차엔박",
+        "addrJibun" : "서울특별시 강남구 도곡동 514-2 유니북스빌딩",
+        "introPath" : "https:\/\/img.doctalk.co.kr\/dev\/company\/image\/20210803\/4DryAmQe-cNfs-4jxp-9abO-73c6gcqyJcY8.jpeg.png",
+        "addrRoad" : "서울특별시 강남구 논현로 164(도곡동)",
+        "hid" : "hid-1nZaV9Bz-eoVu-59cx-bxfb-2dqGRaYx7Jj2",
+        "addrEtc" : "10층",
+        "authedYn" : "Y"
+    },
+    {
+        "addrEtc" : "테스트",
+        "addrRoad" : "서울특별시 강남구 자곡로 201 (자곡동)",
+        "useNaverBookingYn" : "N",
+        "hid" : "hid_c47980df376956526bba7ec928c4c5dae9a916e1e43f22e86ba9218aee80e47e",
+        "introPath" : "https:\/\/img.doctalk.co.kr\/doctalk\/res\/dev\/2019\/11\/19\/3rruJoeJ-gVAm-4Kxf-a65y-1FBAjYNrLf6L.png",
+        "companyName" : "닥닥 병원(중지해도되는닥닥)",
+        "authedYn" : "Y",
+        "addrJibun" : "서울특별시 강남구 자곡동 596 강남 더샵 라르고"
+    },
+    {
+        "addrEtc" : "101",
+        "addrRoad" : "서울특별시 강남구 논현로 641(논현동)",
+        "useNaverBookingYn" : "N",
+        "hid" : "hid-3AHhZQa8-3LJU-4qPY-abgI-iHrl5PofmfHY",
+        "introPath" : "https:\/\/img.doctalk.co.kr\/dev\/company\/image\/20210916\/3ZK9njgv-gluP-4GkL-8HqF-HuRV7vfHXP8T.png",
+        "companyName" : "닥닥병원",
+        "authedYn" : "Y",
+        "addrJibun" : "서울특별시 강남구 논현동 152-5 논현동대우아이빌 힐타운"
+    },
+    {
+        "useNaverBookingYn" : "N",
+        "companyName" : "Almighty_도곡양재차엔박",
+        "addrJibun" : "서울특별시 강남구 도곡동 514-2 유니북스빌딩",
+        "introPath" : "https:\/\/img.doctalk.co.kr\/dev\/company\/image\/20210803\/4DryAmQe-cNfs-4jxp-9abO-73c6gcqyJcY8.jpeg.png",
+        "addrRoad" : "서울특별시 강남구 논현로 164(도곡동)",
+        "hid" : "hid-1nZaV9Bz-eoVu-59cx-bxfb-2dqGRaYx7Jj2",
+        "addrEtc" : "10층",
+        "authedYn" : "Y"
+    },
+    {
+        "addrEtc" : "테스트",
+        "addrRoad" : "서울특별시 강남구 자곡로 201 (자곡동)",
+        "useNaverBookingYn" : "N",
+        "hid" : "hid_c47980df376956526bba7ec928c4c5dae9a916e1e43f22e86ba9218aee80e47e",
+        "introPath" : "https:\/\/img.doctalk.co.kr\/doctalk\/res\/dev\/2019\/11\/19\/3rruJoeJ-gVAm-4Kxf-a65y-1FBAjYNrLf6L.png",
+        "companyName" : "닥닥 병원(중지해도되는닥닥)",
+        "authedYn" : "Y",
+        "addrJibun" : "서울특별시 강남구 자곡동 596 강남 더샵 라르고"
+    },
+    {
+        "addrEtc" : "101",
+        "addrRoad" : "서울특별시 강남구 논현로 641(논현동)",
+        "useNaverBookingYn" : "N",
+        "hid" : "hid-3AHhZQa8-3LJU-4qPY-abgI-iHrl5PofmfHY",
+        "introPath" : "https:\/\/img.doctalk.co.kr\/dev\/company\/image\/20210916\/3ZK9njgv-gluP-4GkL-8HqF-HuRV7vfHXP8T.png",
+        "companyName" : "닥닥병원",
+        "authedYn" : "Y",
+        "addrJibun" : "서울특별시 강남구 논현동 152-5 논현동대우아이빌 힐타운"
+    },
+    {
+        "addrEtc" : "테스트",
+        "addrRoad" : "서울특별시 강남구 자곡로 201 (자곡동)",
+        "useNaverBookingYn" : "N",
+        "hid" : "hid_c47980df376956526bba7ec928c4c5dae9a916e1e43f22e86ba9218aee80e47e",
+        "introPath" : "https:\/\/img.doctalk.co.kr\/doctalk\/res\/dev\/2019\/11\/19\/3rruJoeJ-gVAm-4Kxf-a65y-1FBAjYNrLf6L.png",
+        "companyName" : "닥닥 병원(중지해도되는닥닥)",
+        "authedYn" : "Y",
+        "addrJibun" : "서울특별시 강남구 자곡동 596 강남 더샵 라르고"
+    },
+    {
+        "useNaverBookingYn" : "N",
+        "companyName" : "Almighty_도곡양재차엔박",
+        "addrJibun" : "서울특별시 강남구 도곡동 514-2 유니북스빌딩",
+        "introPath" : "https:\/\/img.doctalk.co.kr\/dev\/company\/image\/20210803\/4DryAmQe-cNfs-4jxp-9abO-73c6gcqyJcY8.jpeg.png",
+        "addrRoad" : "서울특별시 강남구 논현로 164(도곡동)",
+        "hid" : "hid-1nZaV9Bz-eoVu-59cx-bxfb-2dqGRaYx7Jj2",
+        "addrEtc" : "10층",
+        "authedYn" : "Y"
+    }
+]

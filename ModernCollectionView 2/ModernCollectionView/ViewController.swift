@@ -237,7 +237,7 @@ extension ViewController {
         let outlineCellRegistration = createOutlineCellRegistration()
         let createPlaceRegistration = createPlainCellRegistration()
         
-        // data sourc
+        // data source
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section") }

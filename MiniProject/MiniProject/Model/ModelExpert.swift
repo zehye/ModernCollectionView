@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ModelExpert: NSObject {
+class ModelExpert: Codable {
     var age: Int?
     var alarmYn: String = ""
     var birthday: Double?
