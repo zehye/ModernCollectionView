@@ -6,36 +6,42 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class ModelExpert: Codable {
-    var age: Int?
-    var alarmYn: String = ""
-    var birthday: Double?
-    var cellphone: String = ""
-    var deepslideModelUuid: String = ""
-    var deepslideSampleAudio: String = ""
-    var email: String = ""
+struct Expert {
+    let age: Int?
     var expertType: String = ""
     var expertTypeName: String = ""
-    var faqUse: Bool?
-    var gender: String = ""
-    var genderName: String = ""
     var career: String = ""
     var ability: String = ""
     var authState: String = ""
-    var isDeepslide: String = ""
-    var likeCnt: Int = 0
     var memberType: String = ""
     var name: String = ""
-    var naverId: String = ""
     var profilePath: String = ""
-    var realAge: Int?
-    var requestCancelYn: String = ""
-    var status: String = ""
-    var statusName: String = ""
     var uid: String = ""
-    var usePasswordYn: String = ""
-    var answerCnt: Int = 0
-    var emrUserId: String = ""
-    var hchatUseYn: String = ""
+    
+    init(_ json: [String:JSON]?) {
+        let json = json ?? [:]
+        self.age = json["age"]?.int
+        self.expertType = json["expertType"]?.string ?? ""
+        self.expertTypeName = json["expertTypeName"]?.string ?? ""
+        self.career = json["career"]?.string ?? ""
+        self.ability = json["ability"]?.string ?? ""
+        self.authState = json["authState"]?.string ?? ""
+        self.memberType = json["memberType"]?.string ?? ""
+        self.name = json["name"]?.string ?? ""
+        self.profilePath = json["profilePath"]?.string ?? ""
+        self.uid = json["uid"]?.string ?? ""
+    }
+    
+    init(_ json: JSON?) {
+        self.init(json?.dictionaryValue)
+    }
+    
+    static func list(_ json: [JSON]?) -> [Expert] {
+        guard let json = json else { return [Expert]() }
+        return json.map({ (element) -> Expert in
+            return Expert(element)
+        })
+    }
 }

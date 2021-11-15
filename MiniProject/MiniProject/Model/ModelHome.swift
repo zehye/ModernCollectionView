@@ -6,26 +6,25 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-enum Home: String {
-    case company
-}
+struct Home {
+    
+    var companyList: [Company]
+    var consultList: [Consult]
+    var companyPosition: Int?
+    var expertPosition: Int?
+    var expertList: [Expert]
 
-extension Home {
-    static var jsonwithModel: [(home: Home, company: [Company])] {
-        [
-            (.company, .companyJson)
-        ]
+    init(_ json: JSON) {
+        self.init(json.dictionaryValue)
+    }
+
+    init(_ json: [String:JSON]) {
+        self.companyList = Company.list(json["companyInfoList"]?.array)
+        self.companyPosition = json["companyPosition"]?.int
+        self.consultList = Consult.list(json["consultInfoList"]?.array)
+        self.expertList = Expert.list(json["expertInfoList"]?.array)
+        self.expertPosition = json["expertPosition"]?.int
     }
 }
-
-/*
- class ModelHome: Codable {
-     var companyInfoList = [ModelCompany]()
-     var companyPosition: Int?
-     var consultList = [ModelConsult]()
-     var expertList = [ModelExpert]()
-     var expertPosition: Int?
- //    var pageMap = DoctalkPageMapV1DTO()
- }
- */
