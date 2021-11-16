@@ -9,23 +9,27 @@ import UIKit
 import SwiftyJSON
 
 struct Company {
-    var addrEtc: String
-//    var addrJibun: String
-    var addrRoad: String
-//    var companyName: String
-//    var authedYn: String
-    let introPath: String
-//    let hid: String
+    var addrEtc: String?
+    var addrJibun: String?
+    var addrRoad: String?
+    var companyName: String?
+    var authedYn: String?
+    var introPath: UIImage? = nil
+    let hid: String?
     
     init(_ json: [String: JSON]?) {
         let json = json ?? [:]
+//        print(json)
         self.addrEtc = json["addrEtc"]?.string ?? ""
-//        self.addrJibun = json["addrJibun"]?.string ?? ""
+        self.addrJibun = json["addrJibun"]?.string ?? ""
         self.addrRoad = json["addrRoad"]?.string ?? ""
-//        self.companyName = json["companyName"]?.string ?? ""
-//        self.authedYn = json["authedYn"]?.string ?? ""
-        self.introPath = json["introPath"]?.string ?? ""
-//        self.hid = json["hid"]?.string ?? ""
+        self.companyName = json["companyName"]?.string ?? ""
+        self.authedYn = json["authedYn"]?.string ?? ""
+        if let url = URL(string: json["introPath"]?.stringValue ?? ""),
+           let image = try? Data(contentsOf: url) {
+            self.introPath = UIImage(data: image)
+        }
+        self.hid = json["hid"]?.string ?? ""
     }
     
     init(_ json: JSON?) {
@@ -43,11 +47,11 @@ struct Company {
 extension Company: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(addrEtc)
-//        hasher.combine(addrJibun)
+        hasher.combine(addrJibun)
         hasher.combine(addrRoad)
-//        hasher.combine(companyName)
-//        hasher.combine(hid)
-//        hasher.combine(authedYn)
+        hasher.combine(companyName)
+        hasher.combine(hid)
+        hasher.combine(authedYn)
         hasher.combine(introPath)
     }
 }

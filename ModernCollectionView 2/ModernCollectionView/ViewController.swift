@@ -53,6 +53,7 @@ class ViewController: UIViewController {
         configureHierarchy()
         configureDataSource()
         applyInitialSnapshots()
+        
 //        self.collectionView.register(UINib(nibName: "EmojiCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customCell")
     }
 }

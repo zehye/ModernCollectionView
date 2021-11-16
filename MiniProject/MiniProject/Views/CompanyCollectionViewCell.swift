@@ -9,22 +9,28 @@ import UIKit
 
 class CompanyCollectionViewCell: UICollectionViewCell {
     
-//    var item: Company?
-//
-//    @IBOutlet weak var addressLbl: UILabel!
-//    @IBOutlet weak var addressEtcLbl: UILabel!
-//    @IBOutlet weak var imgView: UIImageView!
-//
-//    func setUI(with company: Company) {
-//        print(company)
-//        self.addressLbl.text = company.addrRoad
-//        self.addressEtcLbl.text = company.addrEtc
-//        self.imgView.image = UIImage(named: company.introPath)
-//    }
+
+    private let profielImgView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFill
+        imgView.clipsToBounds = true
+        imgView.backgroundColor = .clear
+        return imgView
+    }()
     
-    weak var addressLbl: UILabel?
-//    weak var addressEtcLbl: UILabel?
-//    weak var imgView: UIImageView?
+    private let companyLbl: UILabel = {
+        let lbl = UILabel()
+        lbl.font = .systemFont(ofSize: 16)
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    
+    private let addressLbl: UILabel = {
+        let lbl = UILabel()
+        lbl.font = .systemFont(ofSize: 14)
+        lbl.textAlignment = .center
+        return lbl
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,18 +42,35 @@ class CompanyCollectionViewCell: UICollectionViewCell {
     }
     
     func setView() {
-        self.contentView.backgroundColor = .blue
-        self.contentView.layer.borderColor = UIColor.black.cgColor
+        self.contentView.backgroundColor = .clear
         
-        let addressLbl = UILabel()
-        addressLbl.textAlignment = .center
-        addressLbl.frame = self.contentView.frame
+        self.contentView.addSubview(profielImgView)
+        self.contentView.addSubview(companyLbl)
         self.contentView.addSubview(addressLbl)
-        self.addressLbl = addressLbl
+        
+        self.profielImgView.snp.makeConstraints {(make) in
+            make.trailing.equalToSuperview().inset(12)
+            make.leading.equalToSuperview()
+            make.height.equalTo(140)
+            make.top.equalToSuperview()
+        }
+        
+        self.companyLbl.snp.makeConstraints{(make) in
+            make.top.equalTo(self.profielImgView.snp.bottom).inset(-8)
+            make.trailing.leading.equalToSuperview().inset(24)
+        }
+        
+        self.addressLbl.snp.makeConstraints {(make) in
+            make.top.equalTo(self.companyLbl.snp.bottom).inset(-8)
+            make.leading.trailing.equalTo(self.companyLbl)
+            make.bottom.lessThanOrEqualToSuperview().inset(8)
+        }
     }
     
     func configure(_ data: Company) {
-        self.addressLbl?.text = data.addrRoad
+        self.profielImgView.image = data.introPath
+        self.companyLbl.text = data.companyName
+        self.addressLbl.text = data.addrRoad
     }
 
 }

@@ -8,7 +8,8 @@ target 'MiniProject' do
   # Pods for MiniProject
    
   pod 'SwiftyJSON', '5.0.1'
- 
+  pod 'SnapKit'
+
 target 'MiniProjectTests' do
     inherit! :search_paths
     # Pods for testing

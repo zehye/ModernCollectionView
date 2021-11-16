@@ -9,14 +9,16 @@ import UIKit
 import SwiftyJSON
 
 struct Consult {
-    let cid: String
-    let compantName: String
-    let seq: String
-    let status: String
-    let title: String
-    let type: String
-    let uid: String
-    let readCnt: String
+    let cid: String?
+    let compantName: String?
+    let seq: String?
+    let status: String?
+    let title: String?
+    let type: String?
+    let uid: String?
+    let readCnt: Int?
+    let content: String?
+    var regDate: Date?
     
     init(_ json: [String:JSON]?) {
         let json = json ?? [:]
@@ -27,7 +29,9 @@ struct Consult {
         self.title = json["title"]?.string ?? ""
         self.type = json["type"]?.string ?? ""
         self.uid = json["uid"]?.string ?? ""
-        self.readCnt = json["readCnt"]?.string ?? ""
+        self.readCnt = json["readCnt"]?.int ?? 0
+        self.content = json["content"]?.string ?? ""
+        self.regDate = Date(timeIntervalSince1970: (json["regDate"]!.doubleValue/1000))
     }
     
     init(_ json: JSON?) {
@@ -52,5 +56,7 @@ extension Consult: Hashable {
         hasher.combine(type)
         hasher.combine(uid)
         hasher.combine(readCnt)
+        hasher.combine(content)
+        hasher.combine(regDate)
     }
 }
