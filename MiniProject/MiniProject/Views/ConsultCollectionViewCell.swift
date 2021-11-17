@@ -25,11 +25,39 @@ class ConsultCollectionViewCell: UICollectionViewCell {
         return lbl
     }()
     
-    private let anwserView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = .brown
-        textView.text = "상담글이 들어갈 자리입니다"
-        return textView
+    private let anwserView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    private let leftView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
+    private let profileImg: UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFill
+        imgView.clipsToBounds = true
+        imgView.layer.cornerRadius = 40/2
+        return imgView
+    }()
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.numberOfLines = 2
+        return label
+    }()
+
+    private let contentLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.numberOfLines = 3
+        label.setContentHuggingPriority(UILayoutPriority(749), for: .vertical)
+        label.setContentCompressionResistancePriority(UILayoutPriority(751), for: .vertical)
+        return label
     }()
     
     private let viewCnt: UILabel = {
@@ -44,6 +72,13 @@ class ConsultCollectionViewCell: UICollectionViewCell {
         lbl.font = .systemFont(ofSize: 14)
         return lbl
     }()
+    
+    private let bottomView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
 
     
     override init(frame: CGRect) {
@@ -61,6 +96,11 @@ class ConsultCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(self.containerView)
         self.containerView.addSubview(self.titleLbl)
         self.containerView.addSubview(self.anwserView)
+        self.contentView.addSubview(self.bottomView)
+        self.anwserView.addSubview(self.nameLabel)
+        self.anwserView.addSubview(self.profileImg)
+        self.anwserView.addSubview(self.leftView)
+        self.anwserView.addSubview(self.contentLabel)
         self.containerView.addSubview(self.viewCnt)
         self.containerView.addSubview(self.dateLbl)
         
@@ -79,6 +119,31 @@ class ConsultCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(100)
         }
         
+        self.leftView.snp.makeConstraints {(make) in
+            make.leading.equalToSuperview().inset(12)
+            make.width.equalTo(5)
+            make.top.bottom.equalToSuperview()
+        }
+        
+        self.profileImg.snp.makeConstraints {(make) in
+            make.leading.equalTo(self.leftView.snp.trailing).inset(-16)
+            make.size.equalTo(40)
+            make.top.equalTo(self.leftView.snp.top)
+        }
+        
+        self.nameLabel.snp.makeConstraints {(make) in
+            make.leading.equalTo(self.profileImg.snp.trailing).inset(-8)
+            make.centerY.equalTo(self.profileImg.snp.centerY)
+            make.trailing.equalToSuperview().inset(16)
+        }
+        
+        self.contentLabel.snp.makeConstraints {(make) in
+            make.top.equalTo(self.profileImg.snp.bottom).inset(-10)
+            make.leading.equalTo(self.profileImg.snp.leading)
+            make.trailing.equalTo(self.nameLabel.snp.trailing)
+            make.bottom.equalTo(self.leftView.snp.bottom)
+        }
+        
         self.viewCnt.snp.makeConstraints {(make) in
             make.leading.equalTo(self.titleLbl.snp.leading)
             make.top.equalTo(self.anwserView.snp.bottom).inset(-4)
@@ -90,6 +155,12 @@ class ConsultCollectionViewCell: UICollectionViewCell {
             make.centerY.equalTo(self.viewCnt.snp.centerY)
             make.trailing.equalToSuperview().inset(24)
         }
+        
+        self.bottomView.snp.makeConstraints {(make) in
+            make.bottom.equalToSuperview().inset(0)
+            make.height.equalTo(5)
+            make.leading.trailing.equalToSuperview()
+        }
 
     }
     
@@ -100,5 +171,8 @@ class ConsultCollectionViewCell: UICollectionViewCell {
             self.dateLbl.text = date
         }
         
+        self.profileImg.image = data.profileImg
+        self.nameLabel.text = "\(data.name!)/\(data.expertTypeName!)/\(data.companyName!)"
+        self.contentLabel.text = data.content
     }
 }

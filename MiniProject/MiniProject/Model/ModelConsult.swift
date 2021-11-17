@@ -10,27 +10,32 @@ import SwiftyJSON
 
 struct Consult {
     let cid: String?
-    let compantName: String?
     let seq: String?
-    let status: String?
     let title: String?
-    let type: String?
     let uid: String?
     let readCnt: Int?
     let content: String?
     var regDate: Date?
+    var profileImg: UIImage? = nil
+    var name: String?
+    var expertTypeName: String?
+    var companyName: String?
     
     init(_ json: [String:JSON]?) {
         let json = json ?? [:]
         self.cid = json["cid"]?.string ?? ""
-        self.compantName = json["companyName"]?.string ?? ""
         self.seq = json["seq"]?.string ?? ""
-        self.status = json["status"]?.string ?? ""
         self.title = json["title"]?.string ?? ""
-        self.type = json["type"]?.string ?? ""
         self.uid = json["uid"]?.string ?? ""
         self.readCnt = json["readCnt"]?.int ?? 0
-        self.content = json["content"]?.string ?? ""
+        self.content = json["lastAnswer"]?["content"].string ?? ""
+        if let url = URL(string: json["lastAnswer"]?["profileImg"].stringValue ?? ""),
+           let image = try? Data(contentsOf: url) {
+            self.profileImg = UIImage(data: image)
+        }
+        self.name = json["lastAnswer"]?["name"].string ?? ""
+        self.expertTypeName = json["lastAnswer"]?["expertTypeName"].string ?? ""
+        self.companyName = json["lastAnswer"]?["companyName"].string ?? ""
         self.regDate = Date(timeIntervalSince1970: (json["regDate"]!.doubleValue/1000))
     }
     
@@ -48,15 +53,6 @@ struct Consult {
 
 extension Consult: Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(cid)
-        hasher.combine(compantName)
         hasher.combine(seq)
-        hasher.combine(status)
-        hasher.combine(title)
-        hasher.combine(type)
-        hasher.combine(uid)
-        hasher.combine(readCnt)
-        hasher.combine(content)
-        hasher.combine(regDate)
     }
 }

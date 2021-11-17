@@ -44,9 +44,10 @@ class ViewController: UIViewController {
     var consultList = Array<Consult>()
     var expertList = Array<Expert>()
     
-    var list = Array<Home>()
+    var companySnapshot = NSDiffableDataSourceSectionSnapshot<Item>()
     
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         super.viewDidLoad()
         
         setData()
@@ -58,6 +59,7 @@ class ViewController: UIViewController {
     }
     
     func setData() {
+        print("setData")
         if let path = Bundle.main.path(forResource: "Home", ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path)) { print("path : \(path)")
             do {
                 let jsonResult = try JSON(data: data)
@@ -78,10 +80,12 @@ class ViewController: UIViewController {
     }
     
     func createLayout() -> UICollectionViewLayout {
+        print("createLayout")
         let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             guard let sectionKind = Section(rawValue: sectionIndex) else { return nil }
             let section: NSCollectionLayoutSection
             if sectionKind == .consult1 || sectionKind == .consult2 {
+                print("layout consult")
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
@@ -93,6 +97,7 @@ class ViewController: UIViewController {
                 section = NSCollectionLayoutSection(group: group)
                 
             } else if sectionKind == .company {
+                print("layout company")
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(350), heightDimension: .absolute(200))
@@ -102,6 +107,7 @@ class ViewController: UIViewController {
                 section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
                 section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
             } else if sectionKind == .expert {
+                print("layout expert")
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(150), heightDimension: .absolute(150))
@@ -120,24 +126,32 @@ class ViewController: UIViewController {
     }
     
     func createCell() {
+        print("createCell")
         self.collectionView.register(CompanyCollectionViewCell.self, forCellWithReuseIdentifier: "CompanyCell")
         self.collectionView.register(ConsultCollectionViewCell.self, forCellWithReuseIdentifier: "ConsultCell")
         self.collectionView.register(ExpertCollectionViewCell.self, forCellWithReuseIdentifier: "ExpertCell")
     }
     
     func createDataSource() {
-        self.dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: self.collectionView) {(collectionView, indexPath, item) -> UICollectionViewCell? in
+        print("createDataSource")
+            self.dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: self.collectionView) {(collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else { fatalError() }
             switch section {
             case .company:
+                print("datasource company")
+                if indexPath.row == self.companyList.count - 1 {
+                    self.appendCompany()
+                }
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CompanyCell", for: indexPath) as? CompanyCollectionViewCell else { preconditionFailure() }
                 cell.configure(item.company!)
                 return cell
             case .consult1, .consult2:
+                print("datasource consult")
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConsultCell", for: indexPath) as? ConsultCollectionViewCell else { preconditionFailure() }
                 cell.configure(item.consult!)
                 return cell
             case .expert:
+                print("datasource expert")
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExpertCell", for: indexPath) as? ExpertCollectionViewCell else { preconditionFailure() }
                 cell.configure(item.expert!)
                 return cell
@@ -150,7 +164,7 @@ class ViewController: UIViewController {
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithTransparentBackground()
-            appearance.backgroundColor = .green
+            appearance.backgroundColor = .systemGreen
             navigationItem.scrollEdgeAppearance = appearance
             navigationItem.standardAppearance = appearance
             navigationItem.compactAppearance = appearance
@@ -160,6 +174,7 @@ class ViewController: UIViewController {
     }
     
     func applySnapshot() {
+        print("appleSnapshot")
         let sections = Section.allCases
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections(sections)
@@ -172,7 +187,6 @@ class ViewController: UIViewController {
         consultSnapshot1.append(consultItems1)
         
         let companyItems = self.companyList.map { Item(company: $0) }
-        var companySnapshot = NSDiffableDataSourceSectionSnapshot<Item>()
         companySnapshot.append(companyItems)
         
         let consultItems2 = self.consultList[consultCount/2..<consultCount].map { Item(consult: $0) }
@@ -188,4 +202,12 @@ class ViewController: UIViewController {
         dataSource.apply(consultSnapshot2, to: .consult2, animatingDifferences: false)
         dataSource.apply(expertSnapshot, to: .expert, animatingDifferences: false)
     }
+    
+    func appendCompany() {
+        print("appendCompany")
+        let companyItems = self.companyList.map { Item(company: $0) }
+        companySnapshot.append(companyItems)
+        dataSource.apply(companySnapshot, to: .company, animatingDifferences: false)
+    }
+    
 }

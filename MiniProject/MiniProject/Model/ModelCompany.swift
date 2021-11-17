@@ -46,12 +46,8 @@ struct Company {
 
 extension Company: Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(addrEtc)
-        hasher.combine(addrJibun)
-        hasher.combine(addrRoad)
-        hasher.combine(companyName)
+        // combine 왜쓰는가? > 일반적으로 hash를 만드는방법은?
+        // hid, uid, seq
         hasher.combine(hid)
-        hasher.combine(authedYn)
-        hasher.combine(introPath)
     }
 }

@@ -43,11 +43,6 @@ struct Expert {
 
 extension Expert: Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(expertTypeName)
-        hasher.combine(authState)
-        hasher.combine(name)
-        hasher.combine(profilePath)
         hasher.combine(uid)
-        hasher.combine(tagList)
     }
 }

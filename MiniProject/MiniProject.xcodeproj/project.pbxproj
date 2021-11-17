@@ -18,18 +18,14 @@
 		C90ED0D6273B91D500AEF65F /* MiniProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0D5273B91D500AEF65F /* MiniProjectTests.swift */; };
 		C90ED0E0273B91D500AEF65F /* MiniProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0DF273B91D500AEF65F /* MiniProjectUITests.swift */; };
 		C90ED0E2273B91D500AEF65F /* MiniProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0E1273B91D500AEF65F /* MiniProjectUITestsLaunchTests.swift */; };
-		C90ED0F4273B99B000AEF65F /* ModelHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0F3273B99B000AEF65F /* ModelHome.swift */; };
 		C90ED0F6273B99BD00AEF65F /* ModelCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0F5273B99BD00AEF65F /* ModelCompany.swift */; };
 		C90ED0F8273B99C500AEF65F /* ModelExpert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0F7273B99C500AEF65F /* ModelExpert.swift */; };
 		C90ED0FA273B99F200AEF65F /* ModelConsult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0F9273B99F200AEF65F /* ModelConsult.swift */; };
-		C90ED0FC273BC57200AEF65F /* ModelComplexExpert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED0FB273BC57200AEF65F /* ModelComplexExpert.swift */; };
-		C90ED10A273CDF3F00AEF65F /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED109273CDF3F00AEF65F /* Bundle+Extension.swift */; };
 		C90ED10E273CDFEA00AEF65F /* CompanyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED10C273CDFEA00AEF65F /* CompanyCollectionViewCell.swift */; };
 		C90ED116273E085100AEF65F /* ConsultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED114273E085100AEF65F /* ConsultCollectionViewCell.swift */; };
 		C90ED119273E565C00AEF65F /* Home.json in Resources */ = {isa = PBXBuildFile; fileRef = C90ED118273E565C00AEF65F /* Home.json */; };
 		C90ED11B2743468000AEF65F /* ExpertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED11A2743468000AEF65F /* ExpertCollectionViewCell.swift */; };
 		C90ED11D274381F100AEF65F /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED11C274381F100AEF65F /* Extension+Date.swift */; };
-		C90ED11F274387DA00AEF65F /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED11E274387DA00AEF65F /* SearchCollectionViewCell.swift */; };
 		CA9963762DDCBF1916C0BE8C /* Pods_MiniProject_MiniProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B4440C05FBFB64027544D5 /* Pods_MiniProject_MiniProjectUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,18 +68,14 @@
 		C90ED0DB273B91D500AEF65F /* MiniProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90ED0DF273B91D500AEF65F /* MiniProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniProjectUITests.swift; sourceTree = "<group>"; };
 		C90ED0E1273B91D500AEF65F /* MiniProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C90ED0F3273B99B000AEF65F /* ModelHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelHome.swift; sourceTree = "<group>"; };
 		C90ED0F5273B99BD00AEF65F /* ModelCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCompany.swift; sourceTree = "<group>"; };
 		C90ED0F7273B99C500AEF65F /* ModelExpert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExpert.swift; sourceTree = "<group>"; };
 		C90ED0F9273B99F200AEF65F /* ModelConsult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConsult.swift; sourceTree = "<group>"; };
-		C90ED0FB273BC57200AEF65F /* ModelComplexExpert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelComplexExpert.swift; sourceTree = "<group>"; };
-		C90ED109273CDF3F00AEF65F /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		C90ED10C273CDFEA00AEF65F /* CompanyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCollectionViewCell.swift; sourceTree = "<group>"; };
 		C90ED114273E085100AEF65F /* ConsultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultCollectionViewCell.swift; sourceTree = "<group>"; };
 		C90ED118273E565C00AEF65F /* Home.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Home.json; sourceTree = "<group>"; };
 		C90ED11A2743468000AEF65F /* ExpertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertCollectionViewCell.swift; sourceTree = "<group>"; };
 		C90ED11C274381F100AEF65F /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
-		C90ED11E274387DA00AEF65F /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCC556985AE52EB89FDE8724 /* Pods-MiniProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniProjectTests.release.xcconfig"; path = "Target Support Files/Pods-MiniProjectTests/Pods-MiniProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,18 +142,13 @@
 		C90ED0BD273B91D300AEF65F /* MiniProject */ = {
 			isa = PBXGroup;
 			children = (
+				C90ED0CC273B91D400AEF65F /* Info.plist */,
+				C90ED118273E565C00AEF65F /* Home.json */,
+				C90ED1222744CE2700AEF65F /* SupportingFiles */,
+				C90ED1212744CE1E00AEF65F /* ViewController */,
 				C90ED10B273CDFD500AEF65F /* Views */,
 				C90ED108273CDF2900AEF65F /* Extension */,
 				C90ED0F2273B998D00AEF65F /* Model */,
-				C90ED0BE273B91D300AEF65F /* AppDelegate.swift */,
-				C90ED0C0273B91D300AEF65F /* SceneDelegate.swift */,
-				C90ED0C2273B91D300AEF65F /* ViewController.swift */,
-				C90ED0C4273B91D300AEF65F /* Main.storyboard */,
-				C90ED0C7273B91D400AEF65F /* Assets.xcassets */,
-				C90ED0C9273B91D400AEF65F /* LaunchScreen.storyboard */,
-				C90ED0CC273B91D400AEF65F /* Info.plist */,
-				C90ED118273E565C00AEF65F /* Home.json */,
-				C90ED11C274381F100AEF65F /* Extension+Date.swift */,
 			);
 			path = MiniProject;
 			sourceTree = "<group>";
@@ -186,10 +173,8 @@
 		C90ED0F2273B998D00AEF65F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C90ED0F3273B99B000AEF65F /* ModelHome.swift */,
 				C90ED0F5273B99BD00AEF65F /* ModelCompany.swift */,
 				C90ED0F9273B99F200AEF65F /* ModelConsult.swift */,
-				C90ED0FB273BC57200AEF65F /* ModelComplexExpert.swift */,
 				C90ED0F7273B99C500AEF65F /* ModelExpert.swift */,
 			);
 			path = Model;
@@ -198,7 +183,7 @@
 		C90ED108273CDF2900AEF65F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C90ED109273CDF3F00AEF65F /* Bundle+Extension.swift */,
+				C90ED11C274381F100AEF65F /* Extension+Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -206,12 +191,31 @@
 		C90ED10B273CDFD500AEF65F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C90ED11E274387DA00AEF65F /* SearchCollectionViewCell.swift */,
 				C90ED10C273CDFEA00AEF65F /* CompanyCollectionViewCell.swift */,
 				C90ED114273E085100AEF65F /* ConsultCollectionViewCell.swift */,
 				C90ED11A2743468000AEF65F /* ExpertCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C90ED1212744CE1E00AEF65F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C90ED0C2273B91D300AEF65F /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C90ED1222744CE2700AEF65F /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C90ED0BE273B91D300AEF65F /* AppDelegate.swift */,
+				C90ED0C0273B91D300AEF65F /* SceneDelegate.swift */,
+				C90ED0C4273B91D300AEF65F /* Main.storyboard */,
+				C90ED0C7273B91D400AEF65F /* Assets.xcassets */,
+				C90ED0C9273B91D400AEF65F /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		DCE8F107B9757720AC7D1A4D /* Pods */ = {
@@ -469,17 +473,13 @@
 			files = (
 				C90ED11B2743468000AEF65F /* ExpertCollectionViewCell.swift in Sources */,
 				C90ED0C3273B91D300AEF65F /* ViewController.swift in Sources */,
-				C90ED10A273CDF3F00AEF65F /* Bundle+Extension.swift in Sources */,
 				C90ED10E273CDFEA00AEF65F /* CompanyCollectionViewCell.swift in Sources */,
 				C90ED0FA273B99F200AEF65F /* ModelConsult.swift in Sources */,
 				C90ED0BF273B91D300AEF65F /* AppDelegate.swift in Sources */,
 				C90ED0C1273B91D300AEF65F /* SceneDelegate.swift in Sources */,
-				C90ED0FC273BC57200AEF65F /* ModelComplexExpert.swift in Sources */,
-				C90ED0F4273B99B000AEF65F /* ModelHome.swift in Sources */,
 				C90ED116273E085100AEF65F /* ConsultCollectionViewCell.swift in Sources */,
 				C90ED0F6273B99BD00AEF65F /* ModelCompany.swift in Sources */,
 				C90ED0F8273B99C500AEF65F /* ModelExpert.swift in Sources */,
-				C90ED11F274387DA00AEF65F /* SearchCollectionViewCell.swift in Sources */,
 				C90ED11D274381F100AEF65F /* Extension+Date.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
